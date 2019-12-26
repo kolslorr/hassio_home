@@ -1,0 +1,248 @@
+
+chromecast:
+  hide_if_away: false
+  icon:
+  mac: 6C:AD:F8:2F:38:86
+  name: Chromecast
+  picture:
+  track: true
+
+rockrobo:
+  hide_if_away: false
+  icon:
+  mac: 50:EC:50:04:8D:B7
+  name: rockrobo
+  picture:
+  track: true
+
+chuangmi_camera_ipc009:
+  hide_if_away: false
+  icon:
+  mac: 50:EC:50:31:6E:71
+  name: chuangmi camera ipc009
+  picture:
+  track: true
+
+rmproplus_63_75_f3:
+  hide_if_away: false
+  icon:
+  mac: 78:0F:77:63:75:F3
+  name: RMPROPLUS-63-75-f3
+  picture:
+  track: true
+
+c8_f7_42_83_83_6d:
+  hide_if_away: false
+  icon:
+  mac: C8:F7:42:83:83:6D
+  name: c8 f7 42 83 83 6d
+  picture:
+  track: true
+
+esp_cd6c66:
+  hide_if_away: false
+  icon:
+  mac: 40:31:3C:CD:6C:66
+  name: ESP CD6C66
+  picture:
+  track: true
+
+desktop_2n674r6:
+  hide_if_away: false
+  icon:
+  mac: A4:C3:F0:6D:D9:04
+  name: DESKTOP-2N674R6
+  picture:
+  track: true
+
+oneplus7t:
+  hide_if_away: false
+  icon:
+  mac: 4E:AF:21:BC:E9:CB
+  name: OnePlus7T
+  picture:
+  track: true
+
+google_home_mini:
+  hide_if_away: false
+  icon:
+  mac: 48:D6:D5:DB:E0:6A
+  name: Google-Home-Mini
+  picture:
+  track: true
+
+chromecast_audio:
+  hide_if_away: false
+  icon:
+  mac: A4:77:33:F2:F5:6E
+  name: Chromecast-Audio
+  picture:
+  track: true
+
+04_03_d6_4a_8e_4f:
+  hide_if_away: false
+  icon:
+  mac: 04:03:D6:4A:8E:4F
+  name: 04 03 d6 4a 8e 4f
+  picture:
+  track: true
+
+galaxy_tab_a_2016_with_s_pen:
+  hide_if_away: false
+  icon:
+  mac: 3C:F7:A4:06:E8:25
+  name: Galaxy-Tab-A-2016-with-S-Pen
+  picture:
+  track: true
+
+00_e0_4c_68_04_e1:
+  hide_if_away: false
+  icon:
+  mac: 00:E0:4C:68:04:E1
+  name: 00 e0 4c 68 04 e1
+  picture:
+  track: true
+
+a8_23_fe_6d_12_04:
+  hide_if_away: false
+  icon:
+  mac: A8:23:FE:6D:12:04
+  name: a8 23 fe 6d 12 04
+  picture:
+  track: true
+
+b4_6b_fc_d2_e5_e7:
+  hide_if_away: false
+  icon:
+  mac: B4:6B:FC:D2:E5:E7
+  name: b4 6b fc d2 e5 e7
+  picture:
+  track: true
+
+c0_42_d0_3b_64_01:
+  hide_if_away: false
+  icon:
+  mac: C0:42:D0:3B:64:01
+  name: c0 42 d0 3b 64 01
+  picture:
+  track: true
+
+c4_54_44_5b_e2_5d:
+  hide_if_away: false
+  icon:
+  mac: C4:54:44:5B:E2:5D
+  name: c4 54 44 5b e2 5d
+  picture:
+  track: true
+
+10_bf_48_3c_d1_7a:
+  hide_if_away: false
+  icon:
+  mac: 10:BF:48:3C:D1:7A
+  name: 10 bf 48 3c d1 7a
+  picture:
+  track: true
+
+ce_87_fa_c8_84_df:
+  hide_if_away: false
+  icon:
+  mac: CE:87:FA:C8:84:DF
+  name: ce 87 fa c8 84 df
+  picture:
+  track: true
+
+iphone:
+  hide_if_away: false
+  icon:
+  mac: 6C:E8:5C:47:64:D8
+  name: iPhone
+  picture:
+  track: true
+
+mi5_miphone:
+  hide_if_away: false
+  icon:
+  mac: 38:A4:ED:BD:1A:26
+  name: MI5-MiPhone
+  picture:
+  track: true
+
+d0_50_99_85_12_d8:
+  hide_if_away: false
+  icon:
+  mac: D0:50:99:85:12:D8
+  name: d0 50 99 85 12 d8
+  picture:
+  track: true
+
+lgwebostv:
+  hide_if_away: false
+  icon:
+  mac: 4C:1B:86:D7:54:F4
+  name: LGwebOSTV
+  picture:
+  track: true
+
+oneplus7t_2:
+  hide_if_away: false
+  icon:
+  mac: C2:A5:DA:C0:10:A5
+  name: OnePlus7T
+  picture:
+  track: true
+
+ring:
+  hide_if_away: false
+  icon:
+  mac: 4C:24:98:4F:36:58
+  name: Ring
+  picture:
+  track: true
+
+9c_5a_44_d6_7c_6f:
+  hide_if_away: false
+  icon:
+  mac: 9C:5A:44:D6:7C:6F
+  name: 9c 5a 44 d6 7c 6f
+  picture:
+  track: true
+
+ww_1k7rrq2:
+  hide_if_away: false
+  icon:
+  mac: 04:D3:B0:F4:F1:23
+  name: WW-1K7RRQ2
+  picture:
+  track: true
+
+vivo_1718:
+  hide_if_away: false
+  icon:
+  mac: 3C:A6:16:AA:7F:79
+  name: vivo-1718
+  picture:
+  track: true
+
+50_ec_50_ee_58_12:
+  hide_if_away: false
+  icon:
+  mac: 50:EC:50:EE:58:12
+  name: 50 ec 50 ee 58 12
+  picture:
+  track: true
+
+30_07_4d_0f_11_de:
+  hide_if_away: false
+  icon:
+  mac: 30:07:4D:0F:11:DE
+  name: 30 07 4d 0f 11 de
+  picture:
+  track: true
+
+mi9se_miphone:
+  hide_if_away: false
+  icon:
+  mac: 60:AB:67:E8:A7:E8
+  name: Mi9SE-MiPhone
+  picture:
+  track: true

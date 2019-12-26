@@ -1,0 +1,114 @@
+- id: '1573298066914'
+  alias: Turn on fan and light when back home at evening
+  description: Fires during 7-9pm on coming home only
+  trigger:
+  - entity_id: person.ping_seng
+    from: not_home
+    platform: state
+    to: home
+  condition:
+  - after: '19:00:00'
+    before: '21:00:00'
+    condition: time
+  action:
+  - service: script.living_fan_3
+  - alias: ''
+    data:
+      entity_id: switch.living_light_power
+    service: switch.turn_on
+  - data:
+      entity_id: media_player.botanique_home_mini
+      message: welcome back!
+    service: tts.google_translate_say
+- id: '1573951043840'
+  alias: Ring Doorbell Pressed
+  description: ''
+  trigger:
+  - entity_id: binary_sensor.ring_front_door_ding
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition: []
+  action:
+  - data:
+      media_content_id: https://www.soundjay.com/door/doorbell-1.mp3
+      media_content_type: audio/mp3
+    entity_id: media_player.botanique_home_mini
+    service: media_player.play_media
+- id: '1576134652401'
+  alias: Notify when front door opened
+  description: ''
+  trigger:
+  - entity_id: binary_sensor.0x00158d00039ab792_contact
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition: []
+  action:
+  - data:
+      message: front door is opened
+      title: door open
+    service: notify.mobile_app_oneplus_7t_mobile_app
+- id: '1576895034778'
+  alias: Turn on kitchen light if motion detected
+  description: Only after sunset
+  trigger:
+  - device_id: 9536fc4188c84f629537a5e8408cf3b0
+    domain: binary_sensor
+    entity_id: binary_sensor.0x00158d0003a4e7ed_occupancy
+    platform: device
+    type: motion
+  condition:
+  - after: '19:00:00'
+    before: 08:00:00
+    condition: time
+  action:
+  - device_id: e67f3b3a8afe48fbb15a2f283cf2522a
+    domain: switch
+    entity_id: switch.0x00158d00034d86d6_switch
+    type: turn_on
+- id: '1576895089498'
+  alias: turn off kitchen light if no motion
+  description: ''
+  trigger:
+  - device_id: 9536fc4188c84f629537a5e8408cf3b0
+    domain: binary_sensor
+    entity_id: binary_sensor.0x00158d0003a4e7ed_occupancy
+    for:
+      hours: 0
+      minutes: 3
+      seconds: 0
+    platform: device
+    type: no_motion
+  condition: []
+  action:
+  - device_id: e67f3b3a8afe48fbb15a2f283cf2522a
+    domain: switch
+    entity_id: switch.0x00158d00034d86d6_switch
+    type: turn_off
+- id: '1576984737131'
+  alias: Turn off master aircon if temp < 26 degrees
+  description: 5 mins later turn off aircon completely then fan mode 2
+  trigger:
+  - below: 26
+    device_id: 55287d9dac5f4f6882391ee7eaa3a2c8
+    domain: sensor
+    entity_id: sensor.0x00158d0003d45b43_temperature
+    for:
+      hours: 0
+      minutes: 5
+      seconds: 0
+    platform: device
+    type: temperature
+  condition: []
+  action:
+  - alias: ''
+    data: {}
+    entity_id: switch.master_aircon_vent
+    service: switch.turn_on
+  - service: script.master_fan_1
+  - delay: '300'
+  - entity_id: switch.master_aircon_vent
+    service: switch.turn_off
+  - delay: '3600'
+  - service: script.master_fan_2
