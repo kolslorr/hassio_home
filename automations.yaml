@@ -8,23 +8,24 @@
     to: home
   condition:
   - after: '19:00:00'
-    before: '21:00:00'
+    before: '20:00:00'
     condition: time
+  - condition: and
+    conditions:
+    - condition: state
+      entity_id: person.li_ping
+      state: not_home
   action:
   - service: script.living_fan_3
-  - alias: ''
-    data:
-      entity_id: switch.living_light_power
+  - data: {}
+    entity_id: switch.living_light_power
     service: switch.turn_on
-  - data:
-      entity_id: media_player.botanique_home_mini
-      message: welcome back!
-    service: tts.google_translate_say
+  mode: single
 - id: '1573951043840'
   alias: Ring Doorbell Pressed
   description: ''
   trigger:
-  - entity_id: binary_sensor.ring_front_door_ding
+  - entity_id: binary_sensor.front_door_ding_2
     from: 'off'
     platform: state
     to: 'on'
@@ -43,12 +44,15 @@
     from: 'off'
     platform: state
     to: 'on'
-  condition: []
+  condition:
+  - condition: state
+    entity_id: person.ping_seng
+    state: not_home
   action:
   - data:
       message: front door is opened
       title: door open
-    service: notify.mobile_app_oneplus_7t_mobile_app
+    service: notify.mobile_app_hd1900
 - id: '1576895034778'
   alias: Turn on kitchen light if motion detected
   description: Only after sunset
@@ -59,14 +63,20 @@
     platform: device
     type: motion
   condition:
-  - after: '19:00:00'
-    before: 08:00:00
-    condition: time
+  - condition: or
+    conditions:
+    - after: sunset
+      after_offset: -01:00:00
+      condition: sun
+    - before: sunrise
+      before_offset: +01:00:00
+      condition: sun
   action:
   - device_id: e67f3b3a8afe48fbb15a2f283cf2522a
     domain: switch
-    entity_id: switch.0x00158d00034d86d6_switch
+    entity_id: switch.kitchenlight_switch
     type: turn_on
+  mode: single
 - id: '1576895089498'
   alias: turn off kitchen light if no motion
   description: ''
@@ -76,39 +86,108 @@
     entity_id: binary_sensor.0x00158d0003a4e7ed_occupancy
     for:
       hours: 0
-      minutes: 3
-      seconds: 0
+      minutes: 0
+      seconds: 30
     platform: device
     type: no_motion
   condition: []
   action:
   - device_id: e67f3b3a8afe48fbb15a2f283cf2522a
     domain: switch
-    entity_id: switch.0x00158d00034d86d6_switch
+    entity_id: switch.kitchenlight_switch
     type: turn_off
+  mode: restart
 - id: '1576984737131'
-  alias: Turn off master aircon if temp < 26 degrees
-  description: 5 mins later turn off aircon completely then fan mode 2
+  alias: Turn off master aircon if temp < 2x degrees
+  description: ''
   trigger:
-  - below: 26
+  - below: 27
     device_id: 55287d9dac5f4f6882391ee7eaa3a2c8
     domain: sensor
     entity_id: sensor.0x00158d0003d45b43_temperature
     for:
       hours: 0
-      minutes: 5
+      minutes: 10
       seconds: 0
     platform: device
     type: temperature
+  condition:
+  - after: 03:00:00
+    before: 06:00:00
+    condition: time
+  action:
+  - data: {}
+    entity_id: switch.master_aircon_cool_27
+    service: script.master_aircon_off
+  - service: script.master_fan_1
+  mode: single
+- id: '1578872764913'
+  alias: turn off master aircon completely on weekdays
+  description: ''
+  trigger:
+  - at: 06:30:00
+    platform: time
+  condition:
+  - condition: state
+    entity_id: binary_sensor.workday_sensor
+    state: 'on'
+  action:
+  - entity_id: switch.master_aircon_vent
+    service: script.master_aircon_vent
+  - delay: '600'
+  - entity_id: switch.master_aircon_vent
+    service: script.master_aircon_off
+  - data: {}
+    service: script.master_fan_1
+- id: '1590156374296'
+  alias: Turn off fan at night if temp drops
+  description: ''
+  trigger:
+  - above: '0'
+    below: '29'
+    entity_id: sensor.0x00158d0003d45b43_temperature
+    platform: numeric_state
   condition: []
   action:
-  - alias: ''
-    data: {}
-    entity_id: switch.master_aircon_vent
+  - data: {}
+    service: script.master_fan_off
+- id: '1597928164543'
+  alias: Turn on living room LED on motion
+  description: ''
+  trigger:
+  - device_id: 41ac1ecc2b9240da8f4de7012743c8c1
+    domain: binary_sensor
+    entity_id: binary_sensor.0x00158d000522afb5_occupancy
+    platform: device
+    type: motion
+  condition:
+  - below: 10
+    condition: device
+    device_id: 41ac1ecc2b9240da8f4de7012743c8c1
+    domain: sensor
+    entity_id: sensor.0x00158d000522afb5_illuminance
+    type: is_illuminance
+  action:
+  - data: {}
+    entity_id: switch.tv_console_led
     service: switch.turn_on
-  - service: script.master_fan_1
-  - delay: '300'
-  - entity_id: switch.master_aircon_vent
+  mode: single
+- id: '1597928295788'
+  alias: Turn off living room LED if no motion
+  description: ''
+  trigger:
+  - device_id: 41ac1ecc2b9240da8f4de7012743c8c1
+    domain: binary_sensor
+    entity_id: binary_sensor.0x00158d000522afb5_occupancy
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 30
+    platform: device
+    type: no_motion
+  condition: []
+  action:
+  - data: {}
+    entity_id: switch.tv_console_led
     service: switch.turn_off
-  - delay: '3600'
-  - service: script.master_fan_2
+  mode: restart

@@ -246,3 +246,54 @@ mi9se_miphone:
   name: Mi9SE-MiPhone
   picture:
   track: true
+
+yeelink_light_strip2_miio312667406:
+  hide_if_away: false
+  icon:
+  mac: 5C:E5:0C:87:85:C9
+  name: yeelink-light-strip2 miio312667406
+  picture:
+  track: true
+
+3e_55_0b_88_55_a5:
+  hide_if_away: false
+  icon:
+  mac: 3E:55:0B:88:55:A5
+  name: 3e 55 0b 88 55 a5
+  picture:
+  track: true
+
+ac_64_cf_93_68_79:
+  icon:
+  mac: AC:64:CF:93:68:79
+  name: ac_64_cf_93_68_79
+  picture:
+  track: true
+
+desktop_egavb4p:
+  icon:
+  mac: 10:02:B5:CD:4E:39
+  name: DESKTOP-EGAVB4P
+  picture:
+  track: true
+
+desktop_egavb4p_2:
+  icon:
+  mac: 80:3F:5D:17:14:5B
+  name: DESKTOP-EGAVB4P
+  picture:
+  track: true
+
+hostone:
+  icon:
+  mac:
+  name: hostone
+  picture:
+  track: true
+
+mi9se:
+  icon:
+  mac:
+  name: mi9se
+  picture:
+  track: true
