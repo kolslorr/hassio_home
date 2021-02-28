@@ -10,6 +10,10 @@ frontend:
 # http:
 #   base_url: example.duckdns.org:8123
 
+http:
+  ssl_certificate: /ssl/fullchain.pem
+  ssl_key: /ssl/privkey.pem
+  
 # Text to speech
 tts:
   - platform: google_translate
@@ -18,6 +22,16 @@ group: !include groups.yaml
 automation: !include automations.yaml
 script: !include scripts.yaml
 
+# Example configuration.yaml entry
+media_player:
+  # Use the Python ADB implementation
+  - platform: androidtv
+    name: NVIDIA SHIELD
+    host: 192.168.101.168
+    apps:
+       tv.emby.embyatv : Emby
+       com.liskovsoft.smarttubetv.beta : SmartTubeTV
+      
 webostv:
   host: 192.168.101.140
   name: 'Living Room TV'
@@ -27,18 +41,22 @@ webostv:
       mac: "A8:23:FE:6D:12:04"
   customize:
     sources:
+      - XBOX
+      - SHIELD
+      - switch
       - livetv
-      - youtube
-      - Amazon Prime Video
-      - Emby
-      - desktop
 
 switch:
   - platform: wake_on_lan
     name: "Gaming PC"
     mac: "D0:50:99:85:12:D8"
     host: "192.168.101.6"
-
+    turn_off:
+      service: hassio.addon_stdin
+      data:
+        addon: core_rpc_shutdown
+        input: gaming-pc
+    
 # Master bedroom broadlink switch
   - platform: broadlink
     host: 192.168.101.230
@@ -79,15 +97,15 @@ switch:
           command_on: 'JgBYAAABKpUUERMTEhMUERQSEhMTEhMTEjcTOBI3EzcTEhM3FDYTNxMSEzcTEhQSExITEhQSEhMUNhMSEzcTNxI3EzcTNxQ2EwAFRQABKUsSAAxdAAErSRMADQU='
           command_off: 'JgBgAAABKpUUERQSEhMUERQSExITEhMTEzYUNhQ2EzcTEhQ2EzcTNxI3EzcUEhITExITExITExITExITFDYTNxI3EzcTNxQ2EwAFRQABKkoSAAxdAAErSRMADF0AASlKFAANBQAAAAAAAAAA'
 
-vacuum:
-  - platform: deebot
+deebot:
     username: kolslorr@gmail.com
-    password: Have6funs
+    password: !secret ecovacs_password
     country: sg
     continent: ww
-    deviceid: E02R12796B09HCAD0381
+    deviceid: 
+      - E02R12796B09HCAD0381
     live_map: True                    # Enable Live Map.. may cause issues on low power hardware | Default: True
-    show_color_rooms: True           # Enable draw room colors as in the app | Default: False
+    show_color_rooms: False           # Enable draw room colors as in the app | Default: False
     livemappath: 'www/live_map.png'
 
 camera:

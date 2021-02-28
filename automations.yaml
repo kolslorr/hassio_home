@@ -18,7 +18,7 @@
   action:
   - service: script.living_fan_3
   - data: {}
-    entity_id: switch.living_light_power
+    entity_id: switch.living_light
     service: switch.turn_on
   mode: single
 - id: '1573951043840'
@@ -72,10 +72,10 @@
       before_offset: +01:00:00
       condition: sun
   action:
-  - device_id: e67f3b3a8afe48fbb15a2f283cf2522a
+  - type: turn_on
+    device_id: e67f3b3a8afe48fbb15a2f283cf2522a
+    entity_id: switch.kitchenlight
     domain: switch
-    entity_id: switch.kitchenlight_switch
-    type: turn_on
   mode: single
 - id: '1576895089498'
   alias: turn off kitchen light if no motion
@@ -92,27 +92,27 @@
     type: no_motion
   condition: []
   action:
-  - device_id: e67f3b3a8afe48fbb15a2f283cf2522a
+  - type: turn_off
+    device_id: e67f3b3a8afe48fbb15a2f283cf2522a
+    entity_id: switch.kitchenlight
     domain: switch
-    entity_id: switch.kitchenlight_switch
-    type: turn_off
   mode: restart
 - id: '1576984737131'
   alias: Turn off master aircon if temp < 2x degrees
   description: ''
   trigger:
-  - below: 27
+  - below: 27.5
     device_id: 55287d9dac5f4f6882391ee7eaa3a2c8
     domain: sensor
     entity_id: sensor.0x00158d0003d45b43_temperature
     for:
       hours: 0
-      minutes: 10
+      minutes: 5
       seconds: 0
     platform: device
     type: temperature
   condition:
-  - after: 03:00:00
+  - after: 02:00:00
     before: 06:00:00
     condition: time
   action:
@@ -134,23 +134,25 @@
   action:
   - entity_id: switch.master_aircon_vent
     service: script.master_aircon_vent
+  - data: {}
+    service: script.master_fan_off
   - delay: '600'
   - entity_id: switch.master_aircon_vent
     service: script.master_aircon_off
-  - data: {}
-    service: script.master_fan_1
+  mode: single
 - id: '1590156374296'
   alias: Turn off fan at night if temp drops
   description: ''
   trigger:
   - above: '0'
-    below: '29'
+    below: '28.5'
     entity_id: sensor.0x00158d0003d45b43_temperature
     platform: numeric_state
   condition: []
   action:
   - data: {}
     service: script.master_fan_off
+  mode: single
 - id: '1597928164543'
   alias: Turn on living room LED on motion
   description: ''
@@ -161,12 +163,9 @@
     platform: device
     type: motion
   condition:
-  - below: 10
-    condition: device
-    device_id: 41ac1ecc2b9240da8f4de7012743c8c1
-    domain: sensor
-    entity_id: sensor.0x00158d000522afb5_illuminance
-    type: is_illuminance
+  - condition: time
+    after: '20:30:00'
+    before: 07:00:00
   action:
   - data: {}
     entity_id: switch.tv_console_led
@@ -191,3 +190,32 @@
     entity_id: switch.tv_console_led
     service: switch.turn_off
   mode: restart
+- id: '1602163340691'
+  alias: Switch TV input to SHIELD when turned on
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: media_player.living_room_tv_2
+    from: 'off'
+    to: 'on'
+  condition: []
+  action:
+  - delay: '2'
+  - service: media_player.select_source
+    data:
+      source: SHIELD
+    entity_id: media_player.living_room_tv_2
+  mode: single
+- id: '1602465651431'
+  alias: switch on tv on shield playing
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: media_player.shield_2
+    to: Playing
+  condition: []
+  action:
+  - service: media_player.turn_on
+    data: {}
+    entity_id: media_player.living_room_tv_2
+  mode: single

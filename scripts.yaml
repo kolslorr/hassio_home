@@ -61,28 +61,28 @@ master_fan_off:
   sequence:
   - alias: ''
     data:
-      entity_id: remote.master
+      entity_id: remote.living
       command: b64:sgBKAQodCh0eCgoeCh0KHR4KCh0KHgodHgoKHQoeCh0eCh0KCx0dCh4KHgkeCh0KCh4KHQsdCh0LHAsdHgkLHQodC5AKHQsdCh0eCgodCh4KHR4JCx0LHAsdHgoKHQodCx0eCR4KCh0eCh0KHgodCx0KCh0LHQodCx0KHQsdHgkKHQsdC48LHQodCx0eCQsdCh0LHR0KCx0KHQsdHQoLHQodCh4dCh4KCh0eCh0KHgoeCR4KCh0LHQodCx0KHQodHgoLHAsdCpEKHQodCx0dCgoeCh0KHh0KCx0KHQsdHQoKHgodCh0eCh4JCx0eCh0KHgodCh4KCh0LHQodCh4KHQodHgoKHgodCpALHQodCx0dCgodCx0KHR4KCh4KHQodHgoKHQsdCh0eCh4KCh0eCh0KHgkeCh4JCx0KHgodCh0LHQscHgoKHgodCgAF3AAAAAAAAAAAAAAAAAAA
     service: remote.send_command
 master_fan_1:
   alias: Master Fan Speed - 1
   sequence:
   - data:
-      entity_id: remote.master
+      entity_id: remote.living
       command: b64:sgBKAQsdCh0LHQodCh4eCQsdCh0LHAsdCxwLHQoeHQoKHh0KCh0eCh4JHgoeCR4KCx0KHQoeCh0KHQsdHgkLHQodCpIKHQodCx0KHQoeCh0eCgodCx0KHQoeCh0LHQodHgoKHR4JCx0dCx0KHQoeCh4JCx0KHgodCh0LHQodHgkLHQscC5EKHQsdCh0LHAsdCh0eCgodCx0KHQsdCh0LHAsdHgkLHR4JCx0eCR4KHQsdCh4JCx0KHgodCh0LHQodHgoKHQodC5EKHQsdCh0KHgodCh0eCgoeCh0KHQoeCh0LHAsdHgoKHR4KCh0eCh0KHgkeCh4KCh0KHQsdCh0LHQodHgoKHQscC5EKHQoeCh0KHgodCx0dCgoeCh0KHQsdCh0KHgodHgoKHR4JCx0eCR4KHQsdCh4JCx0KHgodCh0LHQodHgkLHQoeCgAF3AAAAAAAAAAAAAAAAAAA
     service: remote.send_command
 master_fan_2:
   alias: Master Fan Speed - 2
   sequence:
   - data:
-      entity_id: remote.master
+      entity_id: remote.living
       command: b64:sgBKAQsdCh0KHgodCh0eCh4KCh0KHgodCh4KHQodHgodCx0KCh0eCh0KHgodCh4KCh4KHQodCx0KHQoeHQoKHQsdCpIKHQscCx0KHQsdCh4dCh0LCh0KHQsdCh0LHQodHgodCh4KCh0eCR4KHgodCh4KCh0LHQodCh0LHQoeHQoKHQsdCpIKHQodCx0KHgodCh0eCh0KCx0KHgodCh0KHgodHgodCh4KCh0eCh0KHgkeCh4JCx0LHQodCh4KHQscHgoKHQsdCpIKHQoeCh0KHQsdCh0eCh0LCh0KHQsdCh0LHQodHgodCh4KCh0eCh0KHgodCh4KCh0LHQodCx0KHQoeHQoKHQsdCpIKHQodCx0KHQsdCh4dCh0KCx0KHQsdCh0LHQodHgodCh0LCh0eCh0KHgodCh4KCh0KHgodCh4KHQodHgoKHQsdCgAF3AAAAAAAAAAAAAAAAAAA
     service: remote.send_command
 master_fan_3:
   alias: Master Fan Speed - 3
   sequence:
   - data:
-      entity_id: remote.master
+      entity_id: remote.living
       command: b64:sgBKAQsdCh0KHgodHgkLHQoeCh0KHgodCh4KHR4JCh4KHh0KCh0eCh0KHgodCh4KCh4KHQodCx0KHQscHgoLHQodCpIKHQscCx0KHQsdHgkLHQodCx0KHgodCh0LHR0KCh4KHR4KCh0eCh0KHQsdCh4KCh0LHQodCh4KHQoeHQoKHgodCpIKHQoeCh0KHQsdHQoKHgoeCR4KHQoeCh0KHh0KCh4KHR4KCh0eCh0KHQoeCh0KCh4KHgkeCh0LHQodHgoKHQodC5IJHgodCx0KHQodHgoKHQsdCxwLHQoeCh0KHR4KCh0KHh0KCh4eCR4KHgkeCh0KCh4KHQsdCh0LHQodHQoLHQodCpIKHgodCh4JHgoeHQoKHQoeCh0LHQodCh4KHR4KCh0KHR4KCx0dCh0LHQodCh4KCh0LHQodCh4KHQoeHQoKHgodCgAF3AAAAAAAAAAAAAAAAAAA
     service: remote.send_command
 master_aircon_cool_25:
@@ -225,3 +225,42 @@ master_aircon_econo_mode:
         DBAMEQwQDBAMEQwQDBEMDQ8RCw4PEQwNDw4PEAwPDg0QDQ8RCw4PECgNEA0QEAwQDBE MEAwRDBAMEAwRDBANEAwNEBAMEQsODxAMEQwQDBEMEAwQDA4rDSwOKg4PDQANBQAAAA
         AAAAAAAAAAAA==
     service: remote.send_command
+bedtime:
+  alias: Bedtime
+  sequence:
+  - data:
+      entity_id: remote.master
+      command: b64:JgBMAms5DioPKg4OEA0NDw0sDg4QDQ8pDisODg0sDg4NEA0rDisODw0rDisPDg8NDykODw8NECkODhANDw0QDQ8NDw0QDQ8ODw0NEA8NDw0NEA8NEA0PDRANDw0PDQ0QDykODw0PEA0PDQ4PDSwOKg4PDw0NEA8pDSwODhEoDg8PDQ8NDRANDxApDioODw8pDisODg0QDykODw8NDRAPDQ0QDykODw0QDw0PDRApDyoNDxApDg4PDRANDRAPDQ0QDw0QDBANDw0QDQ8NEA0NDxANDQ8PDQ4PDRANDxAMDRAQDBANDQ8QDBANDw0QDQ0PDw4NDw0QDw0PDRANDw0QDQ8NDw4PDQ8NDRAQDA0QDw0QDQ8NEA0PKQ4rDioODw0PDyoODxAMEAACM3Q6DisMLA8NEA0PDRApDg4NEA8pDisODhApDg4QDQ8pDisODhApDykODw8NDSwODg0QDSsNEA8NEA0NDxANDw0QDQ8ODw0NEA8NDw0NEA8NEA0PDQ8NEA0PDQ0QDykODw0PEA0NDw8ODSsOKw4ODRAPDRApDisNDw0rDg8NDxANDw0QDQ8pDisODhApDioNEA8NECgOEA8NDRAPDQ0QDykODw0QDw0PDREoDioODw8pDg8PDRANDQ8RDA0QDw0PDRANDw0QDQ8NDw4NDw8NDRAPDQ0QDQ8NEA8NDRAQDA8ODQ8PDRANDw0QDQ0PDw0NEA0PEA0PDRANDw0PDg8NDw0QDQ8NDRAPDQ0QDw0QDQ8NDw0QKQ4qDisODw8NECkODhANDwANBQAAAAAAAAAAAAAAAA==
+    service: remote.send_command
+  - data:
+      entity_id: remote.living
+      command: b64:sgBKAQsdCh0LHQodCh4eCQsdCh0LHAsdCxwLHQoeHQoKHh0KCh0eCh4JHgoeCR4KCx0KHQoeCh0KHQsdHgkLHQodCpIKHQodCx0KHQoeCh0eCgodCx0KHQoeCh0LHQodHgoKHR4JCx0dCx0KHQoeCh4JCx0KHgodCh0LHQodHgkLHQscC5EKHQsdCh0LHAsdCh0eCgodCx0KHQsdCh0LHAsdHgkLHR4JCx0eCR4KHQsdCh4JCx0KHgodCh0LHQodHgoKHQodC5EKHQsdCh0KHgodCh0eCgoeCh0KHQoeCh0LHAsdHgoKHR4KCh0eCh0KHgkeCh4KCh0KHQsdCh0LHQodHgoKHQscC5EKHQoeCh0KHgodCx0dCgoeCh0KHQsdCh0KHgodHgoKHR4JCx0eCR4KHQsdCh4JCx0KHgodCh0LHQodHgkLHQoeCgAF3AAAAAAAAAAAAAAAAAAA
+    service: remote.send_command
+  - service: switch.turn_on
+    data: {}
+    entity_id: switch.master_light
+  mode: single
+gametime:
+  alias: gametime
+  sequence:
+  - service: media_player.turn_on
+    data: {}
+    entity_id: media_player.living_room_tv_2
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 5
+      milliseconds: 0
+  - service: media_player.select_source
+    data:
+      source: XBOX
+    entity_id: media_player.living_room_tv_2
+  mode: single
+tv_to_shield:
+  alias: TV to SHIELD
+  sequence:
+  - service: media_player.select_source
+    data:
+      source: SHIELD
+    entity_id: media_player.living_room_tv_2
+  mode: single
